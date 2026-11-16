@@ -1,4 +1,9 @@
 name: Hyperscale API Server Executing Seats
+parameters:
+- name: keep_cluster
+  displayName: Keep cluster after benchmark
+  type: boolean
+  default: false
 stages:
 - stage: H2
   displayName: H2
@@ -303,7 +308,7 @@ stages:
             --subscription "b8ceb4e5-f05b-4562-a9f5-14acb1f24219" \
             --timeout-seconds 2700 \
             --poll-interval-seconds 30
-      condition: always()
+      condition: and(always(), not(${{ parameters.keep_cluster }}))
       displayName: Delete resource group with rolling-upgrade recovery (b8ceb4e5-f05b-4562-a9f5-14acb1f24219)
 - stage: H4
   displayName: H4
@@ -608,7 +613,7 @@ stages:
             --subscription "b8ceb4e5-f05b-4562-a9f5-14acb1f24219" \
             --timeout-seconds 2700 \
             --poll-interval-seconds 30
-      condition: always()
+      condition: and(always(), not(${{ parameters.keep_cluster }}))
       displayName: Delete resource group with rolling-upgrade recovery (b8ceb4e5-f05b-4562-a9f5-14acb1f24219)
 - stage: H8
   displayName: H8
@@ -873,5 +878,5 @@ stages:
             --subscription "b8ceb4e5-f05b-4562-a9f5-14acb1f24219" \
             --timeout-seconds 2700 \
             --poll-interval-seconds 30
-      condition: always()
+      condition: and(always(), not(${{ parameters.keep_cluster }}))
       displayName: Delete resource group with rolling-upgrade recovery (b8ceb4e5-f05b-4562-a9f5-14acb1f24219)
