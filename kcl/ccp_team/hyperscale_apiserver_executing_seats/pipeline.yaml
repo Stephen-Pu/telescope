@@ -222,7 +222,6 @@ stages:
         scriptLocation: inlineScript
         inlineScript: |
           set -exo pipefail
-
           set +eo pipefail
           manifest_path="$(Pipeline.Workspace)/s/kcl/ccp_team/hyperscale_apiserver_executing_seats/cl2-rendered.yaml"
           job_details="$(kubectl create --dry-run=client --validate=false -f "$manifest_path" -o go-template='{{if eq .kind "Job"}}{{if .metadata.name}}{{.metadata.name}}{{end}} {{if .metadata.namespace}}{{.metadata.namespace}}{{end}}{{"\n"}}{{end}}')" || exit 1
@@ -519,7 +518,6 @@ stages:
         scriptLocation: inlineScript
         inlineScript: |
           set -exo pipefail
-
           set +eo pipefail
           manifest_path="$(Pipeline.Workspace)/s/kcl/ccp_team/hyperscale_apiserver_executing_seats/cl2-rendered.yaml"
           job_details="$(kubectl create --dry-run=client --validate=false -f "$manifest_path" -o go-template='{{if eq .kind "Job"}}{{if .metadata.name}}{{.metadata.name}}{{end}} {{if .metadata.namespace}}{{.metadata.namespace}}{{end}}{{"\n"}}{{end}}')" || exit 1
@@ -816,7 +814,6 @@ stages:
         scriptLocation: inlineScript
         inlineScript: |
           set -exo pipefail
-
           set +eo pipefail
           manifest_path="$(Pipeline.Workspace)/s/kcl/ccp_team/hyperscale_apiserver_executing_seats/cl2-rendered.yaml"
           job_details="$(kubectl create --dry-run=client --validate=false -f "$manifest_path" -o go-template='{{if eq .kind "Job"}}{{if .metadata.name}}{{.metadata.name}}{{end}} {{if .metadata.namespace}}{{.metadata.namespace}}{{end}}{{"\n"}}{{end}}')" || exit 1
